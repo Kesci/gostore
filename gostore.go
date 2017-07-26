@@ -22,6 +22,10 @@ type Store struct {
 
 // Init init store
 func (s *Store) Init(options *StoreOptions) {
+	if s.Namespace == "" {
+		s.Namespace = "gostore"
+	}
+
 	s.Pool = &redis.Pool{
 		MaxIdle:     3,
 		IdleTimeout: 240 * time.Second,
